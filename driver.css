@@ -1,0 +1,289 @@
+/* ============================================================
+   LOOP OPTIMIZER 26 - WINDOWS PREMIUM FLUENT LIGHT MODE
+   Aesthetic: Windows 11 Mica Light Material & Clean Acrylic
+   ============================================================ */
+
+:root {
+    --win-bg: #f3f3f3; /* Fundo Canvas Clássico do Windows */
+    --win-surface: rgba(243, 243, 243, 0.7); /* Efeito Acrylic Claro */
+    --win-card: rgba(255, 255, 255, 0.7); /* Elemento Material Mica */
+    --win-card-hover: #ffffff;
+    --win-accent: #0078d4; /* Azul Oficial do Windows */
+    --win-accent-secondary: #005a9e;
+    --win-text-main: #202020; /* Grafite Escuro para excelente leitura */
+    --win-text-secondary: #5f5f5f; 
+    --win-border: rgba(0, 0, 0, 0.06);
+    --win-border-hover: rgba(0, 120, 212, 0.3);
+    --win-radius: 8px; /* Cantos arredondados padrão do Windows 11 */
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.04);
+    --shadow-md: 0 8px 16px rgba(0,0,0,0.08);
+    --shadow-lg: 0 20px 40px rgba(0,0,0,0.12);
+    --transition-smooth: all 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
+}
+
+/* Reset e Estrutura Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--win-bg);
+    /* Gradiente sutil baseado no wallpaper oficial Windows Bloom Light */
+    background-image: 
+        radial-gradient(circle at 100% 0%, rgba(0, 120, 212, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 0% 100%, rgba(98, 0, 238, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
+    background-attachment: fixed;
+    color: var(--win-text-main);
+    font-family: 'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Navbar Premium Translúcida */
+.apple-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(243, 243, 243, 0.8);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-bottom: 1px solid var(--win-border);
+    box-shadow: var(--shadow-sm);
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--win-text-main);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo .lev {
+    color: var(--win-accent);
+    font-weight: 700;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--win-text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: var(--transition-smooth);
+}
+
+.nav-links a:hover {
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--win-text-main);
+}
+
+/* Layout Hero Organizado (Dois Lados) */
+main {
+    padding-top: 140px;
+}
+
+.hero-top {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr; /* Divide o texto da imagem do Windows */
+    align-items: center;
+    gap: 60px;
+    position: relative;
+}
+
+.ai-header {
+    text-align: left;
+    animation: slideUp 0.8s cubic-bezier(0.1, 0.9, 0.2, 1);
+}
+
+.ai-badge {
+    display: inline-block;
+    padding: 5px 14px;
+    background: rgba(0, 120, 212, 0.08);
+    border: 1px solid rgba(0, 120, 212, 0.15);
+    color: var(--win-accent);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.hero-top h2 {
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+}
+
+.hero-top p {
+    color: var(--win-text-secondary);
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 540px;
+    margin-bottom: 32px;
+}
+
+/* LOGO DO WINDOWS ELEGANTE (Inserida nativamente ao lado direito com efeito Float) */
+.hero-top::after {
+    content: "";
+    grid-column: 2;
+    grid-row: 1;
+    width: 280px;
+    height: 280px;
+    justify-self: center;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/8/87/Windows_logo_-_2021.svg') no-repeat center;
+    background-size: contain;
+    filter: drop-shadow(0 15px 35px rgba(0, 120, 212, 0.15));
+    animation: subtleFloat 6s ease-in-out infinite;
+}
+
+/* Botão de Download em Vidro Sólido Moderno */
+.apple-button-glass {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--win-accent) !important;
+    color: #ffffff !important;
+    padding: 16px 36px;
+    border-radius: var(--win-radius);
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 120, 212, 0.2), inset 0 1px 0 rgba(255,255,255,0.2);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    border: 1px solid rgba(0, 120, 212, 0.1);
+}
+
+.apple-button-glass:hover {
+    background: var(--win-accent-secondary) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 120, 212, 0.3);
+}
+
+/* Grid de Recursos / Cards Fluent */
+.ai-experience {
+    padding: 20px 0 80px 0;
+}
+
+.container-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.bloco-card {
+    background: var(--win-card);
+    border: 1px solid var(--win-border);
+    border-radius: var(--win-radius);
+    padding: 36px 28px;
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(10px);
+    transition: var(--transition-smooth);
+}
+
+.bloco-card:hover {
+    background: var(--win-card-hover);
+    border-color: var(--win-border-hover);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.bloco-card i {
+    font-size: 32px;
+    color: var(--win-accent);
+    margin-bottom: 20px;
+    display: inline-block;
+    transition: var(--transition-smooth);
+}
+
+.bloco-card:hover i {
+    transform: scale(1.08);
+}
+
+.bloco-card h3 {
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.bloco-card p {
+    font-size: 14px;
+    color: var(--win-text-secondary);
+    line-height: 1.6;
+}
+
+/* Seção de Preview de Sistema */
+.system-preview {
+    text-align: center;
+    padding: 80px 24px;
+    background: rgba(0, 0, 0, 0.01);
+    border-top: 1px solid var(--win-border);
+}
+
+/* Rodapé Limpo e Profissional */
+.apple-footer {
+    border-top: 1px solid var(--win-border);
+    padding: 48px 24px;
+    background: rgba(243, 243, 243, 0.9);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+/* Animações Fluídas */
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes subtleFloat {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Design Responsivo Mobile */
+@media (max-width: 992px) {
+    .hero-top {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .hero-top::after {
+        grid-column: 1;
+        width: 180px;
+        height: 180px;
+    }
+    .hero-top p { margin: 0 auto 32px auto; }
+}

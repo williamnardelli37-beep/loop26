@@ -1,0 +1,388 @@
+/* ============================================================
+   LOOP WEB - PREMIUM LIQUID GLASS E-COMMERCE MOBILE ORIENTED
+   Estética original adaptada perfeitamente para Smartphones
+   ============================================================ */
+
+:root {
+    --bg-main: #f9fafb;
+    --bg-surface: rgba(255, 255, 255, 0.7);
+    --bg-card: rgba(255, 255, 255, 0.85);
+    --text-primary: #111827;
+    --text-secondary: #4b5563;
+    --text-muted: #9ca3af;
+    --accent: #2563eb;
+    --accent-gradient: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.06);
+    --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --radius-sm: 8px;
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset Geral Antivazamento Horizontal */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; /* Evita scrolls laterais que quebram o mobile */
+}
+
+/* Fundo com Imagem Integrada Estilo Premium */
+body {
+    background-image: url('https://images.unsplash.com/photo-1538947151057-dfe933d688d1?q=80&w=1470&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: var(--text-primary);
+    font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Camada de Filtro de Vidro para Leitura de Textos */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(249, 250, 251, 0.5) 0%, rgba(255, 255, 255, 0.75) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* Navbar Adaptada para Mobile */
+.apple-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(249, 250, 251, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+.logo .lev {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--text-primary);
+}
+
+/* Hero Section (Foco 100% Mobile - Sem imagem poluída) */
+.hero-top {
+    padding: 130px 16px 60px 16px;
+    text-align: center;
+}
+
+.hero-top .imagens {
+    display: none !important; /* Esconde a div antiga para limpar a tela inicial */
+}
+
+.hero-top h1 {
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    font-size: 34px; /* Diminuído para caber bem em qualquer ecrã de telemóvel */
+    color: var(--text-primary);
+    margin-bottom: 16px;
+}
+
+.hero-top p {
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.5;
+    max-width: 100%;
+    margin: 0 auto 32px auto;
+}
+
+/* Botões Globais Otimizados para Toque com o Polegar */
+.apple-button-glass, .cta-premium-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Largura total adaptável ao mobile */
+    max-width: 320px;
+    padding: 16px 28px; /* Altura ideal de clique mobile */
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    background: var(--text-primary);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+/* Seção de Destaque (my-iconnect) Ajustada para Grade de Uma Coluna */
+#my-iconnect-featured {
+    padding: 40px 16px;
+}
+
+.premium-focus-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--bg-surface);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: var(--glass-shadow);
+    border-radius: var(--radius-lg);
+    padding: 24px; /* Padding reduzido para não achatar conteúdo nas laterais */
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+}
+
+.premium-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--accent);
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+/* Mudança Crítica: De 2 colunas para 1 coluna no telemóvel */
+.premium-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.premium-info h2 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+}
+
+/* Benefícios em 1 coluna no mobile */
+.premium-benefits {
+    list-style: none;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.premium-benefits li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.premium-benefits i {
+    color: var(--accent);
+    font-size: 18px;
+}
+
+/* Card de Preço */
+.premium-action-card {
+    background: #ffffff;
+    border: 1px solid var(--glass-border);
+    padding: 24px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    width: 100%;
+}
+
+.main-price .amount {
+    font-size: 42px;
+    font-weight: 800;
+}
+
+.cta-premium-btn {
+    max-width: 100%;
+    background: var(--accent-gradient);
+}
+
+/* Vitrines de Planos e Blocos (Cards de Loja empilhados) */
+.container-links {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 16px;
+}
+
+.bloco-card {
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    padding: 28px 24px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+.bloco-card h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.bloco-card button {
+    width: 100%;
+    padding: 14px;
+}
+
+/* Indução de clique no card destacado pelo HTML inline */
+.bloco-card[style*="border"] {
+    border: 2px solid var(--accent) !important;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.bloco-card[style*="border"] button {
+    background: var(--accent-gradient) !important;
+}
+
+/* Seção Extra de Vantagens */
+.features-extra {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 40px 16px;
+}
+
+.feature-item {
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    padding: 24px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--glass-shadow);
+    text-align: center;
+}
+
+/* Centralizador de Headers Globais */
+.centered-header {
+    text-align: center;
+    padding: 0 16px;
+    margin-bottom: 24px;
+}
+
+.centered-header h2 {
+    font-size: 28px;
+}
+
+/* Barra de Pesquisa de Domínios Responsiva */
+#dominio-search div[style*="display: flex"] {
+    flex-direction: column; /* Transforma a linha de input + select + botão em vertical */
+    gap: 12px;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+#domain-input {
+    background: #ffffff !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: var(--radius-sm) !important;
+    width: 100%;
+}
+
+#tld-select {
+    width: 100%;
+    margin-right: 0 !important;
+    padding: 14px !important;
+    height: 50px;
+}
+
+#dominio-search button {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Checkout / Modal */
+.checkout-section {
+    padding: 16px;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkout-container {
+    width: 100%;
+    padding: 24px 16px;
+    border-radius: var(--radius-md);
+}
+
+/* ============================================================
+   REGRAS DE LAYOUT E MEDIA QUERIES PARA ADAPTAÇÃO TOTAL
+   ============================================================ */
+@media (max-width: 768px) {
+    /* Oculta os links padrão da nav do loop.html no mobile se necessário,
+       ou empilha os mesmos elegantemente se não usar menu hambúrguer */
+    .nav-links {
+        gap: 12px;
+    }
+    .nav-links a {
+        font-size: 12px;
+    }
+    
+    /* Configuração de espaçamento de seções no mobile */
+    .section-padding {
+        padding: 40px 0 !important;
+    }
+}
+
+@media (min-width: 769px) {
+    /* Retorna a estrutura normal para Desktop sem quebrar nada */
+    .hero-top h1 { font-size: 52px; }
+    .premium-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; }
+    .premium-benefits { grid-template-columns: 1fr 1fr; }
+    .container-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+    .features-extra { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; }
+    .apple-button-glass, .cta-premium-btn { width: auto; }
+    #dominio-search div[style*="display: flex"] { flex-direction: row !important; background: #f5f5f7 !important; border: 1px solid rgba(0, 0, 0, 0.792) !important; padding: 10px !important; border-radius: 20px !important; }
+    #domain-input { background: transparent !important; border: none !important; width: auto; }
+    #tld-select { width: auto; margin-right: 10px !important; }
+}
