@@ -612,8 +612,15 @@ p {
     height: 360px;
     object-fit: contain;
     filter: drop-shadow(0 0 80px rgba(255, 255, 255, 0.18)); 
-    transition: transform 0.15s cubic-bezier(0.1, 0.8, 0.2, 1), opacity 0.3s ease;
-    will-change: transform;
+    opacity: 1; /* Já inicia forte */
+    transition: transform 0.15s cubic-bezier(0.1, 0.8, 0.2, 1);
+    will-change: transform, opacity;
+}
+/* Nova animação atrelada ao scroll */
+@keyframes fadeOutOnScroll {
+    to {
+        opacity: 0 !important;
+    }
 }
 
 .space-stars {
