@@ -1,24 +1,22 @@
 /**
- * Loop 26 - Motor Interativo Parallax: Layout por CSS e Efeitos por JS
+ * Loop 26 - Motor Interativo Parallax: Cross-Fade com Opacidade Nítida (Quiet Luxury)
  */
-
 document.addEventListener('DOMContentLoaded', () => {
     const planetImage = document.querySelector('.planet-image');
     const intelligenceSection = document.querySelector('.intelligence');
-
     if (!planetImage) return;
 
-    const terraSrc = "ChatGPT_Image_2_de_jul._de_2026__14_03_58-removebg-preview.png";
+    const terraSrc = "it.png";
     const bitcoinSrc = "bit.png"; 
 
-    // Pré-carregamento da imagem
+    // Pré-carregamento da imagem para evitar lags na transição
     const imgCache = new Image();
     imgCache.src = bitcoinSrc;
 
     const isMobile = window.innerWidth <= 768;
     let ticking = false;
     let atualIsBitcoin = false;
-    let emTransicao = false; 
+    let emTransicao = false;
 
     function updateParallax() {
         const scrolled = window.scrollY;
@@ -29,75 +27,63 @@ document.addEventListener('DOMContentLoaded', () => {
         const rotateX = isMobile ? 0 : Math.min(scrolled * 0.03, 15); 
         let baseScale = isMobile ? 1 : (1 + (scrolled * 0.0003));
         
-        // O transform agora aplica apenas os efeitos físicos, o alinhamento está fixo via CSS margin
         planetImage.style.transform = `translate3d(0, ${translateY}px, 0) rotateX(${rotateX}deg) rotate(${rotateDeg}deg) scale(${baseScale})`;
 
-        // 2. DETECÇÃO DA SEÇÃO INTELLIGENCE E TROCA DE FOTO
+        // 2. DETECÇÃO DA SEÇÃO INTELLIGENCE COM TRANSIÇÃO EM CROSS-FADE SUAVE
         if (intelligenceSection) {
             const intelligenceTop = intelligenceSection.getBoundingClientRect().top;
-
+            
+            // Ponto de gatilho: Metade da tela
             if (intelligenceTop <= window.innerHeight * 0.5) {
-                
-                // Transição para o Bitcoin
+                // Troca para o Bitcoin com suavidade
                 if (!atualIsBitcoin && !emTransicao) {
                     emTransicao = true;
-                    planetImage.style.transition = 'filter 0.1s ease-out';
-                    planetImage.style.filter = 'brightness(4) blur(3px) drop-shadow(0 0 30px #fff)'; 
+                    
+                    // Fase 1: Desvanece a imagem atual (Terra)
+                    planetImage.style.transition = 'opacity 0.2s ease-in-out';
+                    planetImage.style.opacity = '0';
 
                     setTimeout(() => {
+                        // Fase 2: Altera a origem da foto em total invisibilidade
                         planetImage.src = bitcoinSrc;
                         planetImage.alt = "Bitcoin";
                         atualIsBitcoin = true;
-
-                        planetImage.style.filter = isMobile 
-                            ? 'brightness(1.2) drop-shadow(0 0 20px rgba(247, 147, 26, 0.8))' 
-                            : 'brightness(1.5) blur(0px) drop-shadow(0 0 40px rgba(247, 147, 26, 0.9))';
+                        
+                        // Fase 3: Faz o Bitcoin surgir na opacidade ideal (0.55 mobile / 0.95 desktop)
+                        planetImage.style.opacity = isMobile ? '0.55' : '0.95'; 
                         
                         setTimeout(() => {
                             planetImage.style.transition = 'none';
                             emTransicao = false;
-                        }, 100);
-                    }, 100);
+                        }, 200);
+                    }, 200);
                 }
-
-                if (atualIsBitcoin && !emTransicao) {
-                    const brightness = 1 + (scrolled * 0.0008);
-                    const glowRadius = isMobile ? 20 : Math.min(scrolled * 0.08, 40);
-                    planetImage.style.filter = `brightness(${brightness}) drop-shadow(0 0 ${glowRadius}px rgba(247, 147, 26, 0.85))`;
-                }
-
             } else {
-                // Transição de volta para a Terra
+                // Troca de volta para a Terra com suavidade
                 if (atualIsBitcoin && !emTransicao) {
                     emTransicao = true;
-                    planetImage.style.transition = 'filter 0.1s ease-out';
-                    planetImage.style.filter = 'brightness(4) blur(3px) drop-shadow(0 0 30px #fff)';
+                    
+                    // Fase 1: Desvanece a imagem atual (Bitcoin)
+                    planetImage.style.transition = 'opacity 0.2s ease-in-out';
+                    planetImage.style.opacity = '0';
 
                     setTimeout(() => {
+                        // Fase 2: Altera de volta para a Terra em total invisibilidade
                         planetImage.src = terraSrc;
                         planetImage.alt = "Planeta Terra";
                         atualIsBitcoin = false;
-
-                        planetImage.style.filter = isMobile 
-                            ? 'brightness(1.1) drop-shadow(0 0 20px rgba(0, 149, 255, 0.7))' 
-                            : 'brightness(1.2) blur(0px) drop-shadow(0 0 40px rgba(0, 149, 255, 0.7))';
+                        
+                        // Fase 3: Faz a Terra surgir na opacidade ideal
+                        planetImage.style.opacity = isMobile ? '0.55' : '0.95';
                         
                         setTimeout(() => {
                             planetImage.style.transition = 'none';
                             emTransicao = false;
-                        }, 100);
-                    }, 100);
-                }
-
-                if (!atualIsBitcoin && !emTransicao) {
-                    const brightness = 1 + (scrolled * 0.0008);
-                    const hueRotate = scrolled * 0.05;
-                    const glowRadius = isMobile ? 20 : Math.min(scrolled * 0.08, 40);
-                    planetImage.style.filter = `brightness(${brightness}) hue-rotate(${hueRotate}deg) drop-shadow(0 0 ${glowRadius}px rgba(0, 149, 255, 0.65))`;
+                        }, 200);
+                    }, 200);
                 }
             }
         }
-
         ticking = false;
     }
 
