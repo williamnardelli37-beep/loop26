@@ -29,12 +29,11 @@ html, body {
 }
 
 body {
-    /* Substitua o body antigo por este */
     background-image: url('pag.avif');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* Efeito Parallax: a imagem fica fixa enquanto o conteúdo rola */
+    background-attachment: fixed; /* Efeito Parallax fixo para Computadores (Desktop) */
     color: var(--text-primary);
     font-family: var(--font-family);
     min-height: 100vh;
@@ -42,7 +41,7 @@ body {
     position: relative;
 }
 
-/* Criamos uma camada escura e sutil sobre a imagem para dar contraste e leitura aos textos */
+/* Camada escura e sutil sobre a imagem para dar contraste e leitura aos textos */
 body::before {
     content: '';
     position: fixed;
@@ -365,7 +364,7 @@ p {
     background: var(--bg-main);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-lg);
-     flex-direction: column;
+    flex-direction: column;
     justify-content: space-between;
     transition: var(--transition);
 }
@@ -387,22 +386,17 @@ p {
     flex-wrap: wrap;
     width: 100%;
     gap: 40px;
- 
 }
 
 .partner-logo-box {
-    
     width: 100%;
     text-align: center;
 }
 
 @media (min-width:800px) {
     .partner-logo-box {
-        /* flex: 1; */
         width: 140px;
-
     }
-
 }
 
 .logo-text {
@@ -610,18 +604,6 @@ p {
     color: var(--text-primary);
 }
 
-/* Planeta e Espaço */
-.planet-bg-container {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    pointer-events: none;
-    overflow: hidden;
-}
-
 .planet-image {
     position: absolute;
     top: 12%;
@@ -629,7 +611,6 @@ p {
     width: 360px;
     height: 360px;
     object-fit: contain;
-    /* Alterado de azul para um brilho prateado suave (Moonlight) */
     filter: drop-shadow(0 0 80px rgba(255, 255, 255, 0.18)); 
     transition: transform 0.15s cubic-bezier(0.1, 0.8, 0.2, 1), opacity 0.3s ease;
     will-change: transform;
@@ -664,12 +645,16 @@ p {
         width: 260px;
         height: 260px;
         top: 22%;
-        right: -4%; /* Ajustado para não criar scroll horizontal */
+        right: -4%;
     }
 }
 
 @media (max-width: 768px) {
-    /* Exibe o botão hamburguer */
+    /* CORREÇÃO DO BUG MOBILE: Faz a imagem rodar normalmente na rolagem */
+    body {
+        background-attachment: scroll !important;
+    }
+
     .menu-toggle {
         display: flex;
     }
@@ -679,10 +664,10 @@ p {
         display: flex;
         flex-direction: column;
         position: fixed;
-        top: 60px; /* Alinha logo abaixo da barra do topo */
+        top: 60px;
         left: 0;
         width: 100%;
-        height: calc(100vh - 60px); /* Ocupa o restante da tela vertical */
+        height: calc(100vh - 60px);
         background: rgba(249, 250, 251, 0.96);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
@@ -690,22 +675,18 @@ p {
         padding: 40px 24px;
         gap: 32px;
         text-align: center;
-        
-        /* Estado inicial escondido */
         transform: translateX(100%); 
         opacity: 0;
         transition: var(--transition);
         pointer-events: none;
     }
 
-    /* Injetado via JS para abrir o menu */
     .nav-menu.active {
         transform: translateX(0);
         opacity: 1;
         pointer-events: auto;
     }
 
-    /* Animação das barrinhas do Hambúrguer virando um 'X' */
     .menu-toggle.active .bar:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
     }
@@ -720,7 +701,6 @@ p {
         padding: 120px 0 60px 0;
     }
 
-    /* Corrige botões saindo da tela horizontalmente */
     .hero-actions {
         flex-direction: column;
         gap: 12px;
@@ -736,21 +716,21 @@ p {
     .footer-container { flex-direction: column; text-align: center; }
     .footer-meta { align-items: center; }
 
-    /* Esconde ou move o planeta para trás para não quebrar o layout mobile */
     .planet-image {
         width: 180px;
         height: 180px;
         top: 10%;
         right: -10px;
-        opacity: 0.3; /* Deixa discreto como fundo */
+        opacity: 0.3;
     }
 }
+
 .airplane {
     position: fixed;
     top: 50%;
     left: 50%;
-    font-size: 24px; /* Tamanho do avião se for emoji */
+    font-size: 24px;
     z-index: 10;
     pointer-events: none;
-    transition: transform 0.1s ease-out; /* Suaviza o movimento */
+    transition: transform 0.1s ease-out;
 }
