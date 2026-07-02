@@ -110,7 +110,7 @@ p {
     font-weight: 700;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    margin-bottom: 24px;
+    margin-bottom: 64px;
 }
 
 .gradient-text {
@@ -606,10 +606,10 @@ p {
 
 .planet-image {
     position: absolute;
-    top: 12%;
+    top: 10%;
     right: 4%;
-    width: 360px;
-    height: 360px;
+    width: 300px;
+    height: 300px;
     object-fit: contain;
     filter: drop-shadow(0 0 80px rgba(255, 255, 255, 0.18)); 
     opacity: 1; /* Já inicia forte */
