@@ -604,18 +604,21 @@ p {
     color: var(--text-primary);
 }
 
+/* Configuração Geral Estável para Computadores (Desktop) */
 .planet-image {
     position: absolute;
     top: 10%;
     right: 4%;
-    width: 300px;
-    height: 300px;
+    width: 300px !important;
+    height: 300px !important;
     object-fit: contain;
     filter: drop-shadow(0 0 80px rgba(255, 255, 255, 0.18)); 
-    opacity: 1; /* Já inicia forte */
+    opacity: 1;
     transition: transform 0.15s cubic-bezier(0.1, 0.8, 0.2, 1);
     will-change: transform, opacity;
+    display: block;
 }
+
 /* Nova animação atrelada ao scroll */
 @keyframes fadeOutOnScroll {
     to {
@@ -657,7 +660,7 @@ p {
 }
 
 @media (max-width: 768px) {
-    /* EDICÃO MOBILE: Remove a imagem de fundo, adiciona cor azul-céu claro e desativa o overlay */
+    /* EDICÃO MOBILE: Cor de fundo azul-céu limpa e suave */
     body {
         background-image: none !important;
         background-color: #e0f2fe !important;
@@ -728,12 +731,34 @@ p {
     .footer-container { flex-direction: column; text-align: center; }
     .footer-meta { align-items: center; }
 
+    /* CORREÇÃO CRÍTICA DO PLANETA NO IPHONE (MOBILE): */
     .planet-image {
-        width: 180px;
-        height: 180px;
-        top: 10%;
-        right: -10px;
-        opacity: 0.3;
+        width: 180px !important;
+        height: 180px !important;
+        
+        /* Mantemos o comportamento fixado na viewport para o iPhone não jogá-lo para cima */
+        position: fixed !important;
+        top: 25% !important; /* Move o planeta mais para baixo, integrando-o perfeitamente com os textos da Hero */
+        left: 50% !important;
+        
+        /* Centralização matemática precisa baseada em 180px (Metade é 90px) */
+        margin-left: -90px !important; 
+        margin-right: auto !important;
+        
+        /* Opacidade sutil para não cobrir as letras em telas muito pequenas */
+        opacity: 0.25 !important;
+        transform-origin: center center !important;
+        z-index: -1; /* Garante que o texto fique legível por cima do planeta */
+    }
+    
+    /* Mantém o container em tela cheia fixa por trás no iOS */
+    .planet-bg-container {
+        position: fixed !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        top: 0 !important;
+        left: 0 !important;
+        z-index: -1 !important;
     }
 }
 
