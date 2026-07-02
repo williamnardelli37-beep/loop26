@@ -650,9 +650,14 @@ p {
 }
 
 @media (max-width: 768px) {
-    /* CORREÇÃO DO BUG MOBILE: Faz a imagem rodar normalmente na rolagem */
+    /* EDICÃO MOBILE: Remove a imagem de fundo, adiciona cor azul-céu claro e desativa o overlay */
     body {
-        background-attachment: scroll !important;
+        background-image: none !important;
+        background-color: #e0f2fe !important;
+    }
+    
+    body::before {
+        display: none !important; /* Desativa a camada de degradê para preservar o tom azul puro */
     }
 
     .menu-toggle {
