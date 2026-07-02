@@ -26,14 +26,13 @@
 html, body {
     max-width: 100%;
     overflow-x: hidden; /* BLOQUEIO CRÍTICO: Impede qualquer vazamento horizontal no site todo */
+    background-color: #a2cfff; /* AZUL CÉU DE SEGURANÇA: Atua se a imagem falhar */
 }
 
 body {
-    background-image: url('pag.avif');
+    /* Define o azul céu como base e tenta carregar a imagem por cima em computadores */
+    background: #a2cfff url("pag.avif") no-repeat center center fixed;
     background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Efeito Parallax fixo para Computadores (Desktop) */
     color: var(--text-primary);
     font-family: var(--font-family);
     min-height: 100vh;
@@ -650,9 +649,10 @@ p {
 }
 
 @media (max-width: 768px) {
-    /* CORREÇÃO DO BUG MOBILE: Faz a imagem rodar normalmente na rolagem */
+    /* SE A IMAGEM FALHAR NO TELEMÓVEL, APLICA O AZUL CÉU DIRETAMENTE */
     body {
-        background-attachment: scroll !important;
+        background: #a2cfff url("pag.avif") no-repeat center top scroll !important;
+        background-size: cover !important;
     }
 
     .menu-toggle {
