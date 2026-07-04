@@ -1,16 +1,19 @@
 /**
  * Loop 26 - Motor de Funcionamento Geral, Menus Mobile e Regras de Negócio
+ * Versão Otimizada de Alta Performance (Ultra-Light Edition)
  */
 
 let produtoSelecionado = "";
 let precoSelecionado = "";
 
+// ==========================================================================
 // 1. MODAL DE CHECKOUT OUTBOUND WIDGET
+// ==========================================================================
 function abrirCheckout(nome, preco) {
     produtoSelecionado = nome;
     precoSelecionado = preco;
     document.getElementById('check-prod').innerText = nome;
-    document.getElementById('checkout').style.display = 'flex'; // Alterado para flex para alinhar corretamente com o modal centralizado
+    document.getElementById('checkout').style.display = 'flex'; // Alinhamento flexbox centralizado
 }
 
 // Fecha o modal de checkout limpo
@@ -40,7 +43,9 @@ function enviarPedido() {
     window.open(`https://wa.me/5554993243670?text=${msg}`, '_blank');
 }
 
+// ==========================================================================
 // 2. MOTOR DE CONSULTA REAL DE DISPONIBILIDADE DE DOMÍNIOS (RDAP)
+// ==========================================================================
 async function verificarDominio() {
     const nomeOriginal = document.getElementById('domain-input').value.trim();
     const tld = document.getElementById('tld-select').value;
@@ -96,7 +101,9 @@ async function verificarDominio() {
     }
 }
 
-// 3. MOTOR INTERATIVO PARALLAX: TRANSIÇÃO SUAVE CROSS-FADE (QUIET LUXURY)
+// ==========================================================================
+// 3. MOTOR INTERATIVO PARALLAX OTIMIZADO COM ESCAPE MOBILE (CROSS-FADE)
+// ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
     const planetImage = document.querySelector('.planet-image');
     const intelligenceSection = document.querySelector('.intelligence');
@@ -125,21 +132,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const terraSrc = "it.png";
     const bitcoinSrc = "bit.png"; 
 
+    // Bloqueia cálculos de movimento em telas mobile para salvar bateria e CPU
     const isMobile = window.innerWidth <= 768;
     let ticking = false;
     let atualIsBitcoin = false;
     let emTransicao = false;
 
     function updateParallax() {
+        // Se for mobile, ignora o cálculo do movimento tridimensional na rolagem
+        if (isMobile) {
+            ticking = false;
+            return; 
+        }
+
         const scrolled = window.scrollY;
 
-        // Animação física suave baseada no rolamento da tela
-        const translateY = scrolled * (isMobile ? 0.2 : 0.45); 
-        const rotateDeg = scrolled * (isMobile ? 0.05 : 0.08); 
-        const rotateX = isMobile ? 0 : Math.min(scrolled * 0.03, 15); 
-        let baseScale = isMobile ? 1 : (1 + (scrolled * 0.0003));
+        // OTIMIZAÇÃO: Translação vertical sutil e rotação simples 2D pura (Processado direto na GPU)
+        // O "rotateX" tridimensional que causava lentidão foi removido
+        const translateY = scrolled * 0.25; 
+        const rotateDeg = scrolled * 0.04; 
         
-        planetImage.style.transform = `translate3d(0, ${translateY}px, 0) rotateX(${rotateX}deg) rotate(${rotateDeg}deg) scale(${baseScale})`;
+        planetImage.style.transform = `translate3d(0, ${translateY}px, 0) rotate(${rotateDeg}deg)`;
 
         // Detecção da seção Intelligence com Cross-Fade síncrono
         if (intelligenceSection) {
@@ -156,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         planetImage.src = bitcoinSrc;
                         planetImage.alt = "Bitcoin";
                         atualIsBitcoin = true;
-                        planetImage.style.opacity = isMobile ? '0.55' : '0.95'; 
+                        planetImage.style.opacity = '0.95'; 
                         
                         setTimeout(() => {
                             planetImage.style.transition = 'none';
@@ -175,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         planetImage.src = terraSrc;
                         planetImage.alt = "Planeta Terra";
                         atualIsBitcoin = false;
-                        planetImage.style.opacity = isMobile ? '0.55' : '0.95';
+                        planetImage.style.opacity = '0.95';
                         
                         setTimeout(() => {
                             planetImage.style.transition = 'none';
@@ -188,6 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ticking = false;
     }
 
+    // Aplicação de Listener Passivo (Garante rolagem fluida e imediata no navegador)
     window.addEventListener('scroll', () => {
         if (!ticking) {
             window.requestAnimationFrame(updateParallax);
@@ -199,6 +213,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Animação de rotação nativa CSS para o ícone de carregamento do buscador de domínios
-const styleSheet = document.createElement("style");
-styleSheet.innerText = `@keyframes spin { to { transform: rotate(360deg); } }`;
-document.head.appendChild(styleSheet);
+if (!document.getElementById('spin-style-framework')) {
+    const styleSheet = document.createElement("style");
+    styleSheet.id = 'spin-style-framework';
+    styleSheet.innerText = `@keyframes spin { to { transform: rotate(360deg); } }`;
+    document.head.appendChild(styleSheet);
+}
