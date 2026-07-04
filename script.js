@@ -1,36 +1,47 @@
- let produtoSelecionado = "";
-        let precoSelecionado = "";
+/**
+ * Loop 26 - Motor de Funcionamento Geral, Menus Mobile e Regras de Negócio
+ */
 
-        function abrirCheckout(nome, preco) {
-            produtoSelecionado = nome;
-            precoSelecionado = preco;
-            document.getElementById('check-prod').innerText = nome;
-            document.getElementById('checkout').style.display = 'block';
-        }
+let produtoSelecionado = "";
+let precoSelecionado = "";
 
-        function fecharCheckout() {
-            document.getElementById('checkout').style.display = 'none';
-        }
+// 1. MODAL DE CHECKOUT OUTBOUND WIDGET
+function abrirCheckout(nome, preco) {
+    produtoSelecionado = nome;
+    precoSelecionado = preco;
+    document.getElementById('check-prod').innerText = nome;
+    document.getElementById('checkout').style.display = 'flex'; // Alterado para flex para alinhar corretamente com o modal centralizado
+}
 
-        function enviarPedido() {
-            const nome = document.getElementById('c-nome').value;
-            const loja = document.getElementById('c-loja').value;
-            const logo = document.getElementById('c-logo').value;
-            const dom = document.getElementById('c-com').value;
+// Fecha o modal de checkout limpo
+function fecharCheckout() {
+    document.getElementById('checkout').style.display = 'none';
+}
 
-            if(!nome || !loja) return alert("Preencha os campos obrigatórios!");
+// Formatação e disparo síncrono para a API externa do WhatsApp
+function enviarPedido() {
+    const nome = document.getElementById('c-nome').value.trim();
+    const loja = document.getElementById('c-loja').value.trim();
+    const logo = document.getElementById('c-logo').value;
+    const dom = document.getElementById('c-com').value;
 
-            const msg = `*SOLICITAÇÃO DE PROJETO LOOP*%0A%0A` +
-                        `*Plano:* ${produtoSelecionado}%0A` +
-                        `*Preço Base:* R$ ${precoSelecionado}%0A%0A` +
-                        `*Cliente:* ${nome}%0A` +
-                        `*Negócio:* ${loja}%0A` +
-                        `*Tem Logo:* ${logo}%0A` +
-                        `*Domínio:* ${dom}`;
+    if (!nome || !loja) {
+        return alert("Por favor, preencha todos os campos obrigatórios!");
+    }
 
-            window.open(`https://wa.me/5554993243670?text=${msg}`, '_blank');
-        }
-         async function verificarDominio() {
+    const msg = `*SOLICITAÇÃO DE PROJETO LOOP*%0A%0A` +
+                `*Plano:* ${produtoSelecionado}%0A` +
+                `*Preço Base:* R$ ${precoSelecionado}%0A%0A` +
+                `*Cliente:* ${nome}%0A` +
+                `*Negócio:* ${loja}%0A` +
+                `*Tem Logo:* ${logo}%0A` +
+                `*Domínio:* ${dom}`;
+
+    window.open(`https://wa.me/5554993243670?text=${msg}`, '_blank');
+}
+
+// 2. MOTOR DE CONSULTA REAL DE DISPONIBILIDADE DE DOMÍNIOS (RDAP)
+async function verificarDominio() {
     const nomeOriginal = document.getElementById('domain-input').value.trim();
     const tld = document.getElementById('tld-select').value;
     const resultDiv = document.getElementById('domain-result');
@@ -38,7 +49,6 @@
     const statusText = document.getElementById('status-text');
     const btnReservar = document.getElementById('btn-reservar');
 
-    // Limpeza simples do nome (remove espaços e caracteres especiais)
     const nome = nomeOriginal.toLowerCase().replace(/[^a-z0-9-]/g, '');
 
     if (nome.length < 3) {
@@ -48,41 +58,147 @@
 
     const dominioCompleto = nome + tld;
 
-    // Interface em estado de busca
     resultDiv.style.display = 'block';
-    statusText.innerHTML = `<i class="ph ph-circle-notch-bold"></i> Consultando base de dados real para <strong>${dominioCompleto}</strong>...`;
-    statusCard.style.background = "#f5f5f7";
+    statusText.innerHTML = `<i class="ph ph-circle-notch-bold" style="animation: spin 1s linear infinite;"></i> Consultando base de dados global para <strong>${dominioCompleto}</strong>...`;
+    statusCard.style.background = "rgba(0, 0, 0, 0.02)";
+    statusCard.style.border = "1px solid rgba(0, 0, 0, 0.05)";
     btnReservar.style.display = 'none';
 
     try {
-        // Usando o serviço RDAP (padrão sucessor do WHOIS)
-        // Nota: domínios .com.br usam caminhos diferentes, aqui tratamos de forma geral
         const url = `https://rdap.org/domain/${dominioCompleto}`;
-        
         const response = await fetch(url);
 
-        // Se o status for 404, significa que o domínio NÃO foi encontrado (está disponível!)
         if (response.status === 404) {
-            statusText.innerHTML = `<i class="ph ph-check-circle" style="color: green;"></i> EXCELENTE! <strong>${dominioCompleto}</strong> está disponível para registro!`;
-            statusCard.style.background = "rgba(0, 255, 0, 0.05)";
-            statusCard.style.border = "1px solid rgba(0, 128, 0, 0.2)";
+            statusText.innerHTML = `<i class="ph ph-check-circle" style="color: green; font-size:16px;"></i> EXCELENTE! O domínio <strong>${dominioCompleto}</strong> está livre e disponível para registro!`;
+            statusCard.style.background = "rgba(0, 255, 0, 0.04)";
+            statusCard.style.border = "1px solid rgba(0, 128, 0, 0.15)";
             btnReservar.style.display = 'inline-block';
+            btnReservar.onclick = function() {
+                window.open(`https://wa.me/5554993243670?text=Olá! Verifiquei no site que o domínio *${dominioCompleto}* está disponível e gostaria de reservá-lo junto ao meu projeto.`, '_blank');
+            };
         } 
-        // Se retornar 200, o domínio existe (está ocupado)
         else if (response.ok) {
-            statusText.innerHTML = `<i class="ph ph-x-circle" style="color: red;"></i> INDISPONÍVEL! <strong>${dominioCompleto}</strong> já possui dono.`;
-            statusCard.style.background = "rgba(255, 0, 0, 0.05)";
-            statusCard.style.border = "1px solid rgba(255, 0, 0, 0.2)";
+            statusText.innerHTML = `<i class="ph ph-x-circle" style="color: red; font-size:16px;"></i> INDISPONÍVEL! O domínio <strong>${dominioCompleto}</strong> já possui dono e está registrado.`;
+            statusCard.style.background = "rgba(255, 0, 0, 0.04)";
+            statusCard.style.border = "1px solid rgba(255, 0, 0, 0.15)";
             btnReservar.style.display = 'none';
         }
         else {
             throw new Error();
         }
-
     } catch (error) {
-        // Caso a API falhe ou bloqueie (CORS), damos uma resposta segura
-        statusText.innerHTML = `<i class="ph ph-warning" style="color: orange;"></i> Não foi possível validar agora. <br> <small>Tente novamente ou nos chame no WhatsApp para checagem manual.</small>`;
+        statusText.innerHTML = `<i class="ph ph-warning" style="color: orange;"></i> Não foi possível validar a base agora. <br> <small>Tente novamente ou fale conosco para checarmos de forma manual.</small>`;
         btnReservar.style.display = 'inline-block';
         btnReservar.innerText = "Consultar via WhatsApp";
+        btnReservar.onclick = function() {
+            window.open(`https://wa.me/5554993243670?text=Olá! Tentei consultar o domínio *${dominioCompleto}* mas deu erro. Pode olhar para mim se está disponível?`, '_blank');
+        };
     }
 }
+
+// 3. MOTOR INTERATIVO PARALLAX: TRANSIÇÃO SUAVE CROSS-FADE (QUIET LUXURY)
+document.addEventListener('DOMContentLoaded', () => {
+    const planetImage = document.querySelector('.planet-image');
+    const intelligenceSection = document.querySelector('.intelligence');
+    
+    // Configuração e ativação do Menu Hamburguer Mobile
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Fecha a gaveta quando um item de menu for clicado
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    }
+
+    if (!planetImage) return;
+
+    const terraSrc = "it.png";
+    const bitcoinSrc = "bit.png"; 
+
+    const isMobile = window.innerWidth <= 768;
+    let ticking = false;
+    let atualIsBitcoin = false;
+    let emTransicao = false;
+
+    function updateParallax() {
+        const scrolled = window.scrollY;
+
+        // Animação física suave baseada no rolamento da tela
+        const translateY = scrolled * (isMobile ? 0.2 : 0.45); 
+        const rotateDeg = scrolled * (isMobile ? 0.05 : 0.08); 
+        const rotateX = isMobile ? 0 : Math.min(scrolled * 0.03, 15); 
+        let baseScale = isMobile ? 1 : (1 + (scrolled * 0.0003));
+        
+        planetImage.style.transform = `translate3d(0, ${translateY}px, 0) rotateX(${rotateX}deg) rotate(${rotateDeg}deg) scale(${baseScale})`;
+
+        // Detecção da seção Intelligence com Cross-Fade síncrono
+        if (intelligenceSection) {
+            const intelligenceTop = intelligenceSection.getBoundingClientRect().top;
+            
+            if (intelligenceTop <= window.innerHeight * 0.5) {
+                if (!atualIsBitcoin && !emTransicao) {
+                    emTransicao = true;
+                    
+                    planetImage.style.transition = 'opacity 0.2s ease-in-out';
+                    planetImage.style.opacity = '0';
+
+                    setTimeout(() => {
+                        planetImage.src = bitcoinSrc;
+                        planetImage.alt = "Bitcoin";
+                        atualIsBitcoin = true;
+                        planetImage.style.opacity = isMobile ? '0.55' : '0.95'; 
+                        
+                        setTimeout(() => {
+                            planetImage.style.transition = 'none';
+                            emTransicao = false;
+                        }, 200);
+                    }, 200);
+                }
+            } else {
+                if (atualIsBitcoin && !emTransicao) {
+                    emTransicao = true;
+                    
+                    planetImage.style.transition = 'opacity 0.2s ease-in-out';
+                    planetImage.style.opacity = '0';
+
+                    setTimeout(() => {
+                        planetImage.src = terraSrc;
+                        planetImage.alt = "Planeta Terra";
+                        atualIsBitcoin = false;
+                        planetImage.style.opacity = isMobile ? '0.55' : '0.95';
+                        
+                        setTimeout(() => {
+                            planetImage.style.transition = 'none';
+                            emTransicao = false;
+                        }, 200);
+                    }, 200);
+                }
+            }
+        }
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    }, { passive: true });
+
+    window.addEventListener('load', updateParallax);
+});
+
+// Animação de rotação nativa CSS para o ícone de carregamento do buscador de domínios
+const styleSheet = document.createElement("style");
+styleSheet.innerText = `@keyframes spin { to { transform: rotate(360deg); } }`;
+document.head.appendChild(styleSheet);

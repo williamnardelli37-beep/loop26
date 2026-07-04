@@ -1,82 +1,201 @@
-/* ============================================================
-   LOOP WEB - PREMIUM LIQUID GLASS E-COMMERCE MOBILE ORIENTED
-   Estética original adaptada perfeitamente para Smartphones
-   ============================================================ */
+/* ==========================================================================
+  LOOP 26 - FRAMEWORK VISUAL LUXO SILENCIOSO (QUIET LUXURY ARCHITECTURE)
+  Estúdio Design de Alta Fidelidade - Edição Construtiva Completa
+ ==========================================================================
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-    --bg-main: #f9fafb;
-    --bg-surface: rgba(255, 255, 255, 0.7);
-    --bg-card: rgba(255, 255, 255, 0.85);
-    --text-primary: #111827;
-    --text-secondary: #4b5563;
-    --text-muted: #9ca3af;
-    --accent: #2563eb;
-    --accent-gradient: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
-    --glass-border: rgba(0, 0, 0, 0.08);
-    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.06);
-    --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --radius-lg: 24px;
-    --radius-md: 16px;
+    /* Paleta Cromática Aristocrática e Corporativa */
+    --bg-main: #fcfcfb;          /* Off-white com subtons de linho natural */
+    --bg-surface: rgba(255, 255, 255, 0.45);
+    --bg-card: #ffffff;
+    --text-primary: #0a0e17;     /* Preto ônix profundo */
+    --text-secondary: #4a5468;   /* Cinza ardósia polido */
+    --text-muted: #8a96a8;       /* Cinza névoa de estúdio */
+    
+    /* Cores de Acentuação Executiva (Foco em Conversão de Alto Padrão) */
+    --accent: #0f172a;           
+    --accent-gradient: linear-gradient(135deg, #0f141e 0%, #2a3b54 100%);
+    --whatsapp-green: #1ebd59;
+    --whatsapp-hover: #17a64c;
+    
+    /* Vidro Líquido & Sombras de Dispersão Molecular */
+    --glass-border: rgba(0, 0, 0, 0.04);
+    --glass-highlight: rgba(255, 255, 255, 0.7);
+    --glass-shadow: 0 30px 60px -15px rgba(15, 20, 30, 0.05), 0 10px 20px -5px rgba(15, 20, 30, 0.02);
+    --card-shadow-hover: 0 50px 100px -20px rgba(15, 20, 30, 0.1), 0 15px 30px -10px rgba(15, 20, 30, 0.04);
+    
+    /* Geometria e Física Espacial */
+    --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --radius-lg: 20px;           /* Curvatura industrial chique */
+    --radius-md: 12px;
     --radius-sm: 8px;
-    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-seda: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); /* Curva de aceleração Apple */
 }
 
-/* Reset Geral Antivazamento Horizontal */
+/* 1. RESET E BLOQUEIOS ESTRUTURAIS CRÍTICOS */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
+/* TRAVA TOTAL CONTRA MOVIMENTOS LATERAIS (RASCUNHO HORIZONTAL BLOQUEADO) */
 html, body {
     max-width: 100%;
-    overflow-x: hidden; /* Evita scrolls laterais que quebram o mobile */
+    overflow-x: hidden;
 }
 
-/* Fundo com Imagem Integrada Estilo Premium */
+html {
+    scroll-behavior: smooth;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
 body {
-    background-image: url('https://images.unsplash.com/photo-1538947151057-dfe933d688d1?q=80&w=1470&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-color: var(--bg-main);
     color: var(--text-primary);
     font-family: var(--font-family);
+    min-height: 100vh;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    line-height: 1.6;
 }
 
-/* Camada de Filtro de Vidro para Leitura de Textos */
+/* Camada Texturizada de Estúdio Fotográfico por trás do layout */
 body::before {
     content: '';
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(249, 250, 251, 0.5) 0%, rgba(255, 255, 255, 0.75) 100%);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.9) 0%, rgba(251, 251, 250, 0.4) 100%);
     z-index: -2;
     pointer-events: none;
 }
 
-/* Navbar Adaptada para Mobile */
-.apple-navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
+/* 2. LAYOUT & CONTAINERS PATRIMONIAIS */
+.container {
     width: 100%;
-    z-index: 1000;
-    background: rgba(249, 250, 251, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--glass-border);
-}
-
-.nav-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 14px 20px;
+    padding: 0 40px;
+}
+
+/* Grid de Alinhamento Global */
+.section-padding {
+    padding: 140px 0;
+}
+
+/* 3. TIPOGRAFIA EDITORIAL EDITADA EM ESTÚDIO */
+h1, h2, h3, h4 {
+    color: var(--text-primary);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.15;
+}
+
+p {
+    color: var(--text-secondary);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.75;
+    letter-spacing: -0.01em;
+}
+
+.gradient-text {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+/* Badges Estruturais (Selos de Grife) */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    background: #ffffff;
+    color: var(--text-primary);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.01);
+    margin-bottom: 24px;
+}
+
+/* 4. ELEMENTOS INTERATIVOS & BOTÕES TÁTEIS */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 36px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: var(--transition-seda);
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background: var(--text-primary);
+    color: #ffffff;
+    border: 1px solid var(--text-primary);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    background: transparent;
+    color: var(--text-primary);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.7);
+    color: var(--text-primary);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+    background: var(--text-primary);
+    color: #ffffff;
+    border-color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+.btn-sm {
+    padding: 10px 20px;
+    font-size: 13px;
+    border-radius: var(--radius-sm);
+}
+
+/* 5. ARQUITETURA NAVAL DA NAVBAR (BLUR PREMIUM) */
+.navbar {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    z-index: 1000;
+    background: rgba(252, 252, 251, 0.75);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+    transition: var(--transition-seda);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -87,302 +206,554 @@ body::before {
     font-weight: 800;
     color: var(--text-primary);
     text-decoration: none;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
 }
 
 .logo .lev {
-    color: var(--accent);
+    color: var(--text-muted);
+    font-weight: 300;
 }
 
-.nav-links {
+.nav-menu {
     display: flex;
-    gap: 24px;
+    gap: 48px;
     list-style: none;
+    align-items: center;
 }
 
-.nav-links a {
+.nav-menu a {
     text-decoration: none;
     color: var(--text-secondary);
     font-size: 14px;
     font-weight: 500;
-    transition: var(--transition);
+    transition: var(--transition-seda);
+    position: relative;
+    padding: 4px 0;
 }
 
-.nav-links a:hover {
+.nav-menu a:hover {
     color: var(--text-primary);
 }
 
-/* Hero Section (Foco 100% Mobile - Sem imagem poluída) */
-.hero-top {
-    padding: 130px 16px 60px 16px;
-    text-align: center;
-}
-
-.hero-top .imagens {
-    display: none !important; /* Esconde a div antiga para limpar a tela inicial */
-}
-
-.hero-top h1 {
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1.2;
-    font-size: 34px; /* Diminuído para caber bem em qualquer ecrã de telemóvel */
-    color: var(--text-primary);
-    margin-bottom: 16px;
-}
-
-.hero-top p {
-    color: var(--text-secondary);
-    font-size: 16px;
-    line-height: 1.5;
-    max-width: 100%;
-    margin: 0 auto 32px auto;
-}
-
-/* Botões Globais Otimizados para Toque com o Polegar */
-.apple-button-glass, .cta-premium-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%; /* Largura total adaptável ao mobile */
-    max-width: 320px;
-    padding: 16px 28px; /* Altura ideal de clique mobile */
-    font-size: 15px;
-    font-weight: 600;
-    border-radius: var(--radius-md);
-    text-decoration: none;
+/* Linha de preenchimento inteligente sob o link ao passar o mouse */
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; width: 100%; height: 1.5px;
     background: var(--text-primary);
-    color: #ffffff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-menu a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Menu Toggle Hamburguer (Estrutura de Linhas Limpas) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
-    transition: var(--transition);
+    padding: 8px;
+    z-index: 1001;
 }
 
-/* Seção de Destaque (my-iconnect) Ajustada para Grade de Uma Coluna */
-#my-iconnect-featured {
-    padding: 40px 16px;
+.menu-toggle .bar {
+    width: 22px;
+    height: 1.5px;
+    background-color: var(--text-primary);
+    transition: var(--transition-seda);
 }
 
-.premium-focus-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    background: var(--bg-surface);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+/* 6. HERO SECTION DESIGN */
+.hero {
+    padding: 220px 0 120px 0;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.hero-text h1 {
+    font-size: 58px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+    margin-bottom: 32px;
+}
+
+.hero-text p {
+    font-size: 19px;
+    margin-bottom: 48px;
+    max-width: 560px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 20px;
+}
+
+/* Cartão Preview Lapidado (Fosco de Alta Qualidade) */
+.glass-preview-card {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid var(--glass-highlight);
     box-shadow: var(--glass-shadow);
     border-radius: var(--radius-lg);
-    padding: 24px; /* Padding reduzido para não achatar conteúdo nas laterais */
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
+    padding: 48px;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    position: relative;
+    transition: var(--transition-seda);
 }
 
-.premium-badge {
-    display: inline-block;
-    padding: 6px 12px;
-    background: rgba(37, 99, 235, 0.08);
-    color: var(--accent);
-    border-radius: 100px;
+.glass-preview-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: var(--card-shadow-hover);
+}
+
+.window-header {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 40px;
+}
+
+.dot { width: 11px; height: 11px; border-radius: 50%; }
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27c93f; }
+
+.card-tag {
     font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
     text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    color: var(--text-muted);
+    display: block;
     margin-bottom: 16px;
 }
 
-/* Mudança Crítica: De 2 colunas para 1 coluna no telemóvel */
-.premium-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
+.glass-preview-card h3 {
+    font-size: 26px;
+    margin-bottom: 14px;
 }
 
-.premium-info h2 {
-    font-size: 28px;
-    font-weight: 800;
-    letter-spacing: -0.03em;
+.glass-preview-card p {
+    font-size: 15px;
+    margin-bottom: 40px;
+}
+
+.insta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--text-primary);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 600;
+    transition: var(--transition-seda);
+}
+
+.insta-link:hover {
+    background: rgba(15, 20, 30, 0.9);
+    transform: scale(1.03);
+}
+
+/* 7. WIDGET DE PESQUISA DE DOMÍNIO (CONSTRUTIVO) */
+.domain-checker-section {
+    padding: 20px 0 80px 0;
+}
+
+.domain-card {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: var(--radius-lg);
+    padding: 48px;
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(20px);
+}
+
+.domain-card h3 {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     margin-bottom: 12px;
 }
 
-/* Benefícios em 1 coluna no mobile */
-.premium-benefits {
-    list-style: none;
-    margin-top: 20px;
+.domain-search-group {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.domain-search-group input, .domain-search-group select {
+    padding: 18px 24px;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: var(--radius-sm);
+    background: #ffffff;
+    font-family: var(--font-family);
+    font-size: 15px;
+    color: var(--text-primary);
+    transition: var(--transition-seda);
+    outline: none;
+}
+
+.domain-search-group input {
+    flex: 1;
+}
+
+.domain-search-group input:focus, .domain-search-group select:focus {
+    border-color: var(--text-primary);
+    box-shadow: 0 0 0 4px rgba(15, 20, 30, 0.03);
+}
+
+.domain-result-box {
+    margin-top: 24px;
+    display: none;
+}
+
+#status-card {
+    padding: 20px 24px;
+    border-radius: var(--radius-sm);
+    font-size: 15px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    align-items: flex-start;
+    gap: 14px;
+    transition: var(--transition-seda);
+}
+
+/* 8. NEXUS PREMIUM API PLATFORM */
+.premium-focus-container {
+    background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%);
+    border: 1px solid rgba(0,0,0,0.03);
+    padding: 80px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--glass-shadow);
+}
+
+.premium-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 64px;
+    margin-top: 32px;
+}
+
+.premium-benefits {
+    margin-top: 32px;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
 }
 
 .premium-benefits li {
-    font-size: 14px;
-    color: var(--text-secondary);
+    font-size: 15px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
+    color: var(--text-secondary);
 }
 
-.premium-benefits i {
-    color: var(--accent);
+.premium-benefits li i {
     font-size: 18px;
+    color: var(--text-primary);
 }
 
-/* Card de Preço */
 .premium-action-card {
     background: #ffffff;
-    border: 1px solid var(--glass-border);
-    padding: 24px;
+    border: 1px solid rgba(0,0,0,0.04);
+    padding: 48px;
     border-radius: var(--radius-md);
-    text-align: center;
-    width: 100%;
-}
-
-.main-price .amount {
-    font-size: 42px;
-    font-weight: 800;
-}
-
-.cta-premium-btn {
-    max-width: 100%;
-    background: var(--accent-gradient);
-}
-
-/* Vitrines de Planos e Blocos (Cards de Loja empilhados) */
-.container-links {
-    max-width: 1200px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding: 16px;
-}
-
-.bloco-card {
-    background: var(--bg-card);
-    border: 1px solid var(--glass-border);
-    padding: 28px 24px;
-    border-radius: var(--radius-md);
+    justify-content: center;
+    align-items: center;
     box-shadow: var(--glass-shadow);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    transition: var(--transition);
+    text-align: center;
 }
 
-.bloco-card h3 {
-    font-size: 20px;
-    margin-bottom: 8px;
+.main-price {
+    font-size: 48px;
+    font-weight: 800;
+    margin: 16px 0;
+    letter-spacing: -0.04em;
 }
 
-.bloco-card button {
-    width: 100%;
-    padding: 14px;
-}
+.main-price .currency { font-size: 20px; font-weight: 600; vertical-align: super; margin-right: 4px; }
+.main-price .period { font-size: 15px; font-weight: 400; color: var(--text-muted); letter-spacing: 0; }
 
-/* Indução de clique no card destacado pelo HTML inline */
-.bloco-card[style*="border"] {
-    border: 2px solid var(--accent) !important;
-    background: rgba(255, 255, 255, 0.95);
-}
-
-.bloco-card[style*="border"] button {
-    background: var(--accent-gradient) !important;
-}
-
-/* Seção Extra de Vantagens */
+/* 9. RECURSOS ADICIONAIS & SEÇÃO INTELIGÊNCIA */
 .features-extra {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    padding: 40px 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 48px;
 }
 
 .feature-item {
-    background: var(--bg-card);
-    border: 1px solid var(--glass-border);
-    padding: 24px;
-    border-radius: var(--radius-md);
-    box-shadow: var(--glass-shadow);
-    text-align: center;
+    padding: 16px;
 }
 
-/* Centralizador de Headers Globais */
+.feature-item i {
+    font-size: 32px;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+    display: block;
+}
+
+.feature-item h3 {
+    font-size: 22px;
+    margin-bottom: 14px;
+}
+
 .centered-header {
     text-align: center;
-    padding: 0 16px;
-    margin-bottom: 24px;
+    max-width: 680px;
+    margin: 0 auto 80px auto;
 }
 
 .centered-header h2 {
-    font-size: 28px;
+    font-size: 42px;
+    margin-top: 16px;
 }
 
-/* Barra de Pesquisa de Domínios Responsiva */
-#dominio-search div[style*="display: flex"] {
-    flex-direction: column; /* Transforma a linha de input + select + botão em vertical */
-    gap: 12px;
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
+.container-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
 }
 
-#domain-input {
-    background: #ffffff !important;
-    border: 1px solid var(--glass-border) !important;
-    border-radius: var(--radius-sm) !important;
-    width: 100%;
+/* Arquitetura dos Blocos de Portfólio / Preços */
+.bloco-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    padding: 56px 48px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--glass-shadow);
+    transition: var(--transition-seda);
+    display: flex;
+    flex-direction: column;
 }
 
-#tld-select {
-    width: 100%;
-    margin-right: 0 !important;
-    padding: 14px !important;
-    height: 50px;
+.bloco-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: rgba(0,0,0,0.08);
 }
 
-#dominio-search button {
-    width: 100% !important;
-    max-width: 100% !important;
+.bloco-card h3 {
+    font-size: 24px;
+    margin-bottom: 16px;
 }
 
-/* Checkout / Modal */
-.checkout-section {
-    padding: 16px;
-    align-items: center;
-    justify-content: center;
+.bloco-card p {
+    font-size: 15px;
+    margin-bottom: 32px;
+    flex-grow: 1;
 }
 
-.checkout-container {
-    width: 100%;
-    padding: 24px 16px;
+/* 10. PERGUNTAS FREQUENTES (FAQ) */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    gap: 40px;
+}
+
+.faq-item {
+    background: rgba(255,255,255,0.3);
+    border: 1px solid rgba(0,0,0,0.02);
+    padding: 32px;
     border-radius: var(--radius-md);
 }
 
-/* ============================================================
-   REGRAS DE LAYOUT E MEDIA QUERIES PARA ADAPTAÇÃO TOTAL
-   ============================================================ */
-@media (max-width: 768px) {
-    /* Oculta os links padrão da nav do loop.html no mobile se necessário,
-       ou empilha os mesmos elegantemente se não usar menu hambúrguer */
-    .nav-links {
-        gap: 12px;
-    }
-    .nav-links a {
-        font-size: 12px;
-    }
-    
-    /* Configuração de espaçamento de seções no mobile */
-    .section-padding {
-        padding: 40px 0 !important;
-    }
+.faq-item h4 {
+    margin-bottom: 12px;
+    font-size: 18px;
 }
 
-@media (min-width: 769px) {
-    /* Retorna a estrutura normal para Desktop sem quebrar nada */
-    .hero-top h1 { font-size: 52px; }
-    .premium-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; }
-    .premium-benefits { grid-template-columns: 1fr 1fr; }
-    .container-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
-    .features-extra { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; }
-    .apple-button-glass, .cta-premium-btn { width: auto; }
-    #dominio-search div[style*="display: flex"] { flex-direction: row !important; background: #f5f5f7 !important; border: 1px solid rgba(0, 0, 0, 0.792) !important; padding: 10px !important; border-radius: 20px !important; }
-    #domain-input { background: transparent !important; border: none !important; width: auto; }
-    #tld-select { width: auto; margin-right: 10px !important; }
+/* 11. SISTEMA INTEGRADO DE CHECKOUT (MODAL GLASS) */
+.checkout-section {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(10, 14, 23, 0.15);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.checkout-container {
+    background: #ffffff;
+    border: 1px solid rgba(255,255,255,0.8);
+    padding: 56px 48px;
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 40px 100px rgba(10,14,23,0.12);
+    animation: modalSurgir 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalSurgir {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.form-group {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+}
+
+.form-group input, .form-group select {
+    padding: 14px 18px;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-family);
+    font-size: 15px;
+    outline: none;
+    transition: var(--transition-seda);
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: var(--text-primary);
+}
+
+/* 12. RODAPÉ INSTITUCIONAL EDITORIAL */
+.apple-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.04);
+    padding: 64px 0;
+    background: #ffffff;
+}
+
+.apple-footer p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+/* 13. MOTOR DOS PLANETAS FIXOS (PARALLAX ATIVOS) */
+.planet-bg-container {
+    position: fixed;
+    top: 0; right: 0;
+    width: 100%; height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.space-stars {
+    position: absolute;
+    width: 100%; height: 100%;
+    background-image: radial-gradient(#ffffff, rgba(255,255,255,.12) 1px, transparent 20px);
+    background-size: 400px 400px;
+    opacity: 0.25;
+}
+
+.planet-image {
+    position: absolute;
+    top: 15%;
+    right: 6%;
+    width: 320px !important;
+    height: 320px !important;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 70px rgba(0,0,0,0.05)); 
+    opacity: 0.95;
+    will-change: transform, opacity;
+    display: block;
+}
+
+/* 14. RESPONSIVIDADE E ACABAMENTOS MOBILE EXTREMOS */
+@media (max-width: 1024px) {
+    .container { padding: 0 32px; }
+    .hero-container { grid-template-columns: 1fr; text-align: center; gap: 64px; }
+    .hero-text h1 { font-size: 46px; }
+    .hero-text p { margin: 0 auto 40px auto; }
+    .hero-actions { justify-content: center; }
+    .premium-grid { grid-template-columns: 1fr; gap: 48px; }
+    .planet-image { width: 260px !important; height: 260px !important; top: 22%; right: 4%; }
+}
+
+@media (max-width: 768px) {
+    .section-padding { padding: 80px 0; }
+    .container { padding: 0 24px; max-width: 100%; overflow: hidden; }
+    body { background-image: none !important; background-color: #f7f7f6 !important; }
+    body::before { display: none !important; }
+    
+    /* Ajustes de Tipografia para Dispositivos Móveis */
+    .hero-text h1 { font-size: 34px; letter-spacing: -0.03em; }
+    .centered-header h2 { font-size: 28px; }
+    .glass-preview-card { padding: 32px 20px; width: 100%; max-width: 100%; box-sizing: border-box; }
+    
+    /* Menu Hamburguer Ativo */
+    .menu-toggle { display: flex; }
+    .nav-container { padding: 18px 24px; width: 100%; }
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 64px; left: 0; width: 100%; height: calc(100vh - 64px);
+        background: rgba(247, 247, 246, 0.98);
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        padding: 60px 32px; gap: 40px; text-align: center;
+        transform: translateX(100%); opacity: 0;
+        transition: var(--transition-seda); pointer-events: none;
+    }
+    .nav-menu.active { transform: translateX(0); opacity: 1; pointer-events: auto; }
+    
+    /* Estados Animados do Menu Gaveta */
+    .menu-toggle.active .bar:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+    .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.active .bar:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+    .hero-actions { flex-direction: column; gap: 14px; width: 100%; }
+    .hero-actions .btn { width: 100%; }
+    
+    .domain-search-group { flex-direction: column; gap: 12px; width: 100%; }
+    .domain-search-group input, .domain-search-group select, .domain-search-group .btn { width: 100%; box-sizing: border-box; }
+    
+    .checkout-container { padding: 40px 24px; width: 100%; }
+    .premium-focus-container, .domain-card { padding: 32px 20px; width: 100%; box-sizing: border-box; }
+    .bloco-card { padding: 40px 24px; width: 100%; box-sizing: border-box; }
+
+    /* CORREÇÃO E TRAVAMENTO DO PLANETA EM TELEFONES */
+    .planet-image {
+        width: 150px !important; height: 150px !important;
+        position: fixed !important; 
+        top: 25% !important; 
+        left: 50% !important;
+        margin-left: -75px !important; 
+        margin-right: auto !important;
+        opacity: 0.35 !important; 
+        transform-origin: center center !important;
+        z-index: -1 !important;
+    }
+    .planet-bg-container {
+        position: fixed !important; width: 100% !important; height: 100vh !important;
+        top: 0 !important; left: 0 !important; z-index: -1 !important;
+    }
 }

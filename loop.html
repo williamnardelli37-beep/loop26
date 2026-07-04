@@ -1,151 +1,210 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="stylesheet" href="media768px.css">
-    <link rel="stylesheet" href="loop.css">
     <link rel="shortcut icon" href="it.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loop 26 | Store 2.0</title>
-    <link rel="stylesheet" href="fa.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
+    <link rel="stylesheet" href="fa.css">
 </head>
 <body>
+
+    <div class="planet-bg-container">
+        <div class="space-stars"></div>
+        <img src="it.png" alt="Planeta Terra" class="planet-image">
+    </div>
     
-    <nav class="apple-navbar">
-        <div class="nav-content">
+    <nav class="navbar">
+        <div class="nav-container">
             <a href="#" class="logo">Loop<span class="lev">store</span></a>
-            <ul class="nav-links">
+            <ul class="nav-menu">
                 <li><a href="#ai-section">Tecnologia</a></li>
                 <li><a href="#store">Preços</a></li>
+                <li><a href="#faq">Dúvidas</a></li>
                 <li><a href="index.html">Voltar</a></li>
-                
             </ul>
+            <button class="menu-toggle" aria-label="Abrir Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </div>
     </nav>
 
     <main>
-        <section class="hero-top">
-          
-            <div style="text-align:center; padding: 40px;">
-                <h1 style="font-size: 3rem; letter-spacing: -2px;">Seu negócio no futuro, hoje.</h1>
-                <p style="color: var(--apple-gray); margin-bottom: 30px;">Sites de alta conversão com a estética Loop 2026.</p>
-                <a href="#store" class="apple-button-glass">Começar Projeto</a>
+        <section class="hero">
+            <div class="container hero-container">
+                <div class="hero-text">
+                    <span class="badge"><i class="ph ph-sparkle"></i> Aesthetic Edition 2026</span>
+                    <h1>Seu negócio no futuro, <span class="gradient-text">hoje.</span></h1>
+                    <p>Sites de alta conversão estruturados sob o conceito visual de luxo silencioso, engenharia fluida e transições táteis.</p>
+                    <div class="hero-actions">
+                        <a href="#store" class="btn btn-primary">Começar Projeto <i class="ph ph-arrow-up-right"></i></a>
+                        <a href="#ai-section" class="btn btn-secondary">Explorar Tecnologia</a>
+                    </div>
+                </div>
+        </section>
+
+        <section class="domain-checker-section">
+            <div class="container">
+                <div class="domain-card">
+                    <h3><i class="ph ph-magnifying-glass"></i> Disponibilidade de Domínio</h3>
+                    <p>Verifique imediatamente se o nome do seu negócio ou marca está livre para registro na rede mundial.</p>
+                    
+                    <div class="domain-search-group">
+                        <input type="text" id="domain-input" placeholder="Ex: sualoja">
+                        <select id="tld-select">
+                            <option value=".com">.com</option>
+                            <option value=".com.br">.com.br</option>
+                            <option value=".net">.net</option>
+                        </select>
+                        <button class="btn btn-primary" onclick="verificarDominio()">Verificar Status</button>
+                    </div>
+
+                    <div id="domain-result" class="domain-result-box">
+                        <div id="status-card">
+                            <span id="status-text"></span>
+                            <button id="btn-reservar" class="btn btn-primary btn-sm" style="display:none; background:#1ebd59; border:none; margin-top:8px;">
+                                <i class="ph ph-whatsapp-logo"></i> Reservar via WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-        <section id="my-iconnect-featured" class="section-padding dynamic-gradient">
-    <div class="premium-focus-container">
-        <div class="premium-badge"><i class="ph ph-crown"></i> Em Breve</div>
-        <div class="premium-grid">
-            <div class="premium-info">
-                
-                <span class="brand-tag">Plataforma de APIs & Automação</span>
-                <h2>NEXUS API</h2>
-                <p class="premium-description">
-                   A plataforma completa para acesso às melhores APIs de Inteligência Artificial e soluções digitais. Integre modelos de IA, automação, processamento de dados e diversos serviços em um único lugar, com infraestrutura de alta disponibilidade, documentação intuitiva e suporte para acelerar o desenvolvimento dos seus projetos.
-                </p>
-                <ul class="premium-benefits">
-                    <li><i class="ph ph-buildings"></i> <strong>App de venda de API</strong> </li>
-                    <li><i class="ph ph-key"></i> <strong>Controle de Acesso de chaves API</strong> </li>
-                    <li><i class="ph ph-lightning"></i> <strong>Sincronização em Tempo Real entre API e servidor </strong> </li>
-                    <li><i class="ph ph-shield-check"></i> <strong>Segurança Máxima</strong> </li>
-                    <li><i class="ph ph-chart-line-up"></i> <strong>Painel Analítico de uso </strong> </li>
-                </ul>
-            </div>
-            <div class="premium-action-card">
-                <span class="price-label">Assinatura Mensal plano inicial</span>
-                <div class="main-price">
-                    <span class="currency">R$</span>
-                    <span class="amount">49,90</span>
-                    <span class="period">/mês</span>
-                </div>
-                <p class="price-subtext">Sem fidelidade, cancele quando quiser.</p>
-                <a href="aguarde.html" target="_blank" rel="noopener noreferrer" class="cta-premium-btn">
-                    Assinar Agora <i class="ph ph-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
 
-        <section class="section-padding" style="background: #fff;">
-            <div class="features-extra">
+        <section id="my-iconnect-featured" class="section-padding">
+            <div class="container premium-focus-container">
+                <span class="badge"><i class="ph ph-crown"></i> Em Breve</span>
+                <div class="premium-grid">
+                    <div class="premium-info">
+                        <span class="brand-tag" style="text-transform:uppercase; font-size:11px; letter-spacing:0.12em; color:var(--text-muted); font-weight:700;">Plataforma de APIs & Automação</span>
+                        <h2 style="font-size:36px; margin: 12px 0 20px 0; letter-spacing:-0.04em;">NEXUS API</h2>
+                        <p class="premium-description">
+                           A plataforma completa para acesso às melhores APIs de Inteligência Artificial e soluções digitais. Integre modelos de IA, automação, processamento de dados e diversos serviços em um único lugar, com infraestrutura de alta disponibilidade.
+                        </p>
+                        <ul class="premium-benefits">
+                            <li><i class="ph ph-buildings"></i> <span><strong>App de venda de API</strong></span></li>
+                            <li><i class="ph ph-key"></i> <span><strong>Controle de chaves API</strong></span></li>
+                            <li><i class="ph ph-lightning"></i> <span><strong>Sincronização Veloz</strong></span></li>
+                            <li><i class="ph ph-shield-check"></i> <span><strong>Segurança Máxima</strong></span></li>
+                            <li><i class="ph ph-chart-line-up"></i> <span><strong>Painel Analítico</strong></span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="premium-action-card">
+                        <span class="price-label" style="font-size:12px; font-weight:600; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.05em;">Plano Inicial</span>
+                        <div class="main-price">
+                            <span class="currency">R$</span>
+                            <span class="amount">49,90</span>
+                            <span class="period">/mês</span>
+                        </div>
+                        <p class="price-subtext" style="font-size:13px; color:var(--text-muted); margin-bottom:28px;">Cancele ou mude de plano quando quiser.</p>
+                        <a href="aguarde.html" target="_blank" class="btn btn-primary" style="width:100%;">
+                            Assinar Agora <i class="ph ph-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding" style="background: #ffffff; border-top: 1px solid rgba(0,0,0,0.02); border-bottom: 1px solid rgba(0,0,0,0.02);">
+            <div class="container features-extra">
                 <div class="feature-item">
                     <i class="ph ph-lightning"></i>
                     <h3>Velocidade Extrema</h3>
-                    <p>Sites que carregam em menos de 2 segundos para não perder vendas.</p>
+                    <p>Sites ultra-otimizados que carregam instantaneamente, eliminando taxas de rejeição.</p>
                 </div>
                 <div class="feature-item">
                     <i class="ph ph-device-mobile"></i>
-                    <h3>Mobile First</h3>
-                    <p>Experiência perfeita em iPhones e Androids de qualquer tamanho.</p>
+                    <h3>Responsive Design</h3>
+                    <p>Arquitetura visual tátil perfeitamente calibrada para displays móveis e iPhones.</p>
                 </div>
                 <div class="feature-item">
-                    <i class="ph ph-google-logo"></i>
-                    <h3>SEO Integrado</h3>
-                    <p>Sua empresa nas primeiras páginas de busca do Google.</p>
-                </div>
-            </div>
-        </section>
-<br>
-        <section id="ai-section" class="ai-experience" style="background: var(--apple-bg);">
-            
-            <div class="ai-header centered-header">
-                <span class="ai-badge">Loop Intelligence</span>
-                <h2>Sistemas Inteligentes</h2>
-                <p>Nossos sites incluem painéis de administração que pensam por você.</p>
-            </div>
-            <div class="container-links">
-                <div class="bloco-card"><h3>Gestão de Estoque</h3><p>Controle seus produtos em tempo real com facilidade.</p></div>
-                <div class="bloco-card"><h3>Checkout Seguro</h3><p>Pagamentos integrados e criptografados ponta a ponta.</p></div>
-            </div>
-        </section>
-
-        <section id="store" class="section-padding">
-            <div class="centered-header">
-                <h2>Planos & Investimento</h2>
-            </div>
-            <div class="container-links">
-                <div class="bloco-card">
-                    <h3>Empresarial Admin</h3>
-                    <p>Site portfólio com painel para você mesmo editar textos e imagens.</p>
-                    <span style="font-size: 24px; font-weight: bold; display:block; margin: 15px 0;">R$ 860,00 <small style="font-size:12px;">+ .com</small></span>
-                    <button onclick="abrirCheckout('Empresarial Admin', '1000')" class="apple-button-glass">Escolher este</button>
-                </div>
-
-                <div class="bloco-card" style="border: 2px solid var(--accent-blue);">
-                    <h3>Landing Page Vendas</h3>
-                    <p>Focada 100% em vender seu produto. Inclui servidor e domínio.</p>
-                    <span style="font-size: 24px; font-weight: bold; display:block; margin: 15px 0;">R$ 2.000,00 <small style="font-size:12px;">Completo</small></span>
-                    <button onclick="abrirCheckout('Landing Page Vendas', '2000')" class="apple-button-glass" style="background: var(--accent-blue); color: #fff;">Escolher este</button>
-                </div>
-
-                <div class="bloco-card">
-                    <h3>LP + Gestão</h3>
-                    <p>A solução para quem precisa vender e controlar estoque simultaneamente.</p>
-                    <span style="font-size: 24px; font-weight: bold; display:block; margin: 15px 0;">R$ 2.000,00 <small style="font-size:12px;">+ sistema</small></span>
-                    <button onclick="abrirCheckout('LP + Gestão', '2000')" class="apple-button-glass">Escolher este</button>
+                    <i class="ph ph-chart-bar"></i>
+                    <h3>SEO Avançado</h3>
+                    <p>Estrutura limpa e sem erros pronta para indexar sua marca de forma orgânica no Google.</p>
                 </div>
             </div>
         </section>
 
-        <section id="faq" class="section-padding" style="background: #fff; border-radius: 30px;">
-            <div class="centered-header">
-                <h2>Perguntas Frequentes</h2>
+        <section id="ai-section" class="intelligence section-padding">
+            <div class="container">
+                <div class="centered-header">
+                    <span class="badge"><i class="ph ph-cpu"></i> Loop Intelligence</span>
+                    <h2>Sistemas Corporativos</h2>
+                    <p>Desenvolvemos painéis de administração fluidos que organizam seus dados de forma autônoma.</p>
+                </div>
+                
+                <div class="container-links">
+                    <div class="bloco-card">
+                        <h3 style="display:flex; align-items:center; gap:12px;"><i class="ph ph-package"></i> Gestão de Estoque</h3>
+                        <p>Controle seus produtos, entradas e saídas em tempo real através de interfaces limpas e minimalistas.</p>
+                    </div>
+                    <div class="bloco-card">
+                        <h3 style="display:flex; align-items:center; gap:12px;"><i class="ph ph-credit-card"></i> Checkout Fluido</h3>
+                        <p>Sistemas de pagamento integrados de ponta a ponta, oferecendo máxima segurança aos compradores.</p>
+                    </div>
+                </div>
             </div>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <h4>Quanto tempo demora para entregar?</h4>
-                    <p>Landing pages ficam prontas em média em 30 dias úteis.</p>
+        </section>
+
+        <section id="store" class="section-padding" style="background: rgba(0,0,0,0.015);">
+            <div class="container">
+                <div class="centered-header">
+                    <span class="badge"><i class="ph ph-wallet"></i> Investimento</span>
+                    <h2>Escolha o Modelo Ideal</h2>
                 </div>
-                <div class="faq-item">
-                    <h4>O site é meu para sempre?</h4>
-                    <p>Sim. Após a entrega, o site e o domínio são de sua total propriedade.</p>
+                
+                <div class="container-links">
+                    <div class="bloco-card">
+                        <h3>Empresarial Admin</h3>
+                        <p>Plataforma institucional corporativa com painel integrado para gerenciamento e publicação de conteúdos.</p>
+                        <span style="font-size: 26px; font-weight: 800; display:block; margin: 24px 0; letter-spacing:-0.03em;">R$ 860,00 <small style="font-size:13px; font-weight:400; color:var(--text-muted);">+ domínio</small></span>
+                        <button onclick="abrirCheckout('Empresarial Admin', '860')" class="btn btn-secondary" style="width:100%;">Selecionar Projeto</button>
+                    </div>
+
+                    <div class="bloco-card" style="border: 2px solid var(--text-primary);">
+                        <div style="display:flex; justify-content:between; align-items:center; margin-bottom:4px;">
+                            <h3 style="margin-bottom:0;">Landing Page Vendas</h3>
+                        </div>
+                        <p>Focada 100% em conversão e campanhas de tráfego. Inclui o primeiro ano de hospedagem de alto desempenho.</p>
+                        <span style="font-size: 26px; font-weight: 800; display:block; margin: 24px 0; letter-spacing:-0.03em;">R$ 2.000,00 <small style="font-size:13px; font-weight:400; color:var(--text-muted);">Completo</small></span>
+                        <button onclick="abrirCheckout('Landing Page Vendas', '2000')" class="btn btn-primary" style="width:100%;">Selecionar Projeto</button>
+                    </div>
+
+                    <div class="bloco-card">
+                        <h3>LP + Automação</h3>
+                        <p>A união exata para marcas que demandam landing pages agressivas e sincronização imediata de leads.</p>
+                        <span style="font-size: 26px; font-weight: 800; display:block; margin: 24px 0; letter-spacing:-0.03em;">R$ 2.000,00 <small style="font-size:13px; font-weight:400; color:var(--text-muted);">+ sistema</small></span>
+                        <button onclick="abrirCheckout('LP + Automação', '2000')" class="btn btn-secondary" style="width:100%;">Selecionar Projeto</button>
+                    </div>
                 </div>
-                <div class="faq-item">
-                    <h4>Terei suporte após a entrega?</h4>
-                    <p>Sim, oferecemos suporte técnico gratuito para qualquer ajuste.</p>
+            </div>
+        </section>
+
+        <section id="faq" class="section-padding" style="background: #ffffff;">
+            <div class="container">
+                <div class="centered-header">
+                    <span class="badge"><i class="ph ph-info"></i> FAQ</span>
+                    <h2>Perguntas Frequentes</h2>
+                </div>
+                
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <h4>Qual é o prazo médio de entrega?</h4>
+                        <p>Landing pages e sistemas customizados são desenhados e homologados em média em até 30 dias úteis.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>O site passa a ser meu de forma definitiva?</h4>
+                        <p>Sim. Após a entrega e conclusão do projeto, todos os acessos, códigos e domínios são transferidos integralmente para sua propriedade legal.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Terei suporte técnico especializado pós-entrega?</h4>
+                        <p>Sim, fornecemos um período estendido de acompanhamento gratuito para garantir a segurança e estabilidade operacional da sua plataforma.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -154,31 +213,46 @@
     <div id="checkout" class="checkout-section">
         <div class="checkout-container">
             <h2 id="check-prod">Finalizar Pedido</h2>
-            <p style="margin-bottom: 20px; color: var(--apple-gray);">Preencha para iniciarmos no WhatsApp.</p>
-            <form id="orderForm">
-                <div class="form-group"><label>Seu Nome</label><input type="text" id="c-nome" required></div>
-                <div class="form-group"><label>Nome do Negócio</label><input type="text" id="c-loja" required></div>
-                <div class="form-group"><label>Possui Logo?</label><select id="c-logo"><option>Sim</option><option>Não (Preciso criar)</option></select></div>
-                <div class="form-group"><label>Deseja domínio .com?</label><select id="c-com"><option>Sim, incluam para mim</option><option>Já tenho domínio</option></select></div>
-                <button type="button" onclick="enviarPedido()" class="apple-button-glass" style="width:100%; background: #25d366; color:#fff; border:none;">Enviar para o WhatsApp</button>
-                <button type="button" onclick="fecharCheckout()" style="width:100%; margin-top:10px; background:none; border:none; color:red; cursor:pointer;">Cancelar</button>
+            <p style="margin-bottom: 32px; color: var(--text-secondary); font-size:14px;">Introduza os detalhes abaixo para estruturarmos o início imediato via atendimento comercial.</p>
+            
+            <form id="orderForm" onsubmit="return false;">
+                <div class="form-group">
+                    <label for="c-nome">Seu Nome Completo</label>
+                    <input type="text" id="c-nome" required placeholder="Ex: Lucas Silva">
+                </div>
+                <div class="form-group">
+                    <label for="c-loja">Nome do Negócio / Marca</label>
+                    <input type="text" id="c-loja" required placeholder="Ex: Loop Premium Store">
+                </div>
+                <div class="form-group">
+                    <label for="c-logo">Possui Logotipo Vetorial?</label>
+                    <select id="c-logo">
+                        <option value="Sim, já possuo identidade definida">Sim, já possuo logotipo pronto</option>
+                        <option value="Não (Gostaria de criar no estúdio)">Não (Desejo criar com o estúdio)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="c-com">Deseja Registro de Domínio .com?</label>
+                    <select id="c-com">
+                        <option value="Sim, incluam o registro no pacote">Sim, incluam a gestão no pacote</option>
+                        <option value="Não, já possuo domínio próprio">Não, já tenho domínio registrado</option>
+                    </select>
+                </div>
+                
+                <button type="button" onclick="enviarPedido()" class="btn btn-primary" style="width:100%; background: #1ebd59; border-color:#1ebd59; color:#ffffff;">
+                    <i class="ph ph-whatsapp-logo" style="font-size:16px;"></i> Enviar Solicitação Comercial
+                </button>
+                <button type="button" onclick="fecharCheckout()" style="width:100%; margin-top:16px; background:none; border:none; color:var(--text-secondary); font-size:14px; cursor:pointer; text-decoration:underline;">Cancelar Operação</button>
             </form>
         </div>
     </div>
-    <br>
 
-<br>
     <footer class="apple-footer">
-        <div class="footer-container">
-            <p>Copyright © 2026 Loop lev & loop creative. Todos os direitos reservados. <strong>54 99324-3670</strong></p>
+        <div class="container">
+            <p>Copyright © 2026 Loop web & loop creative. Todos os direitos reservados. — <strong>54 99324-3670</strong></p>
         </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
-<!-- ============================================================
-   LOOP WEB HTML 2025-2026 SERVICE
-   FRAMEWORK: LOOP 26 - AESTHETIC EDITION (OFFICIAL)
-   DESCRIÇÃO: Design focado em Hiper-Minimalismo e Glassmorphism.
-   ============================================================  -->
